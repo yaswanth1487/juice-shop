@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright (c) 2014-2026 Bjoern Kimminich & the OWASP Juice Shop contributors.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<main class="flash-deals-page">
+  <header>
+    <p class="eyebrow">EXPERIMENTAL</p>
+    <h1>Flash Deals</h1>
+    <p>Deals refresh while you decide. Time left: <strong>{{ secondsRemaining }}</strong> seconds</p>
+    <p class="featured">Featured deal: {{ selectedDeal?.name }}</p>
+  </header>
+
+  <section class="controls" aria-label="Flash deal controls">
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="category" (selectionChange)="loadDeals()">
+        <mat-option value="all">Everything</mat-option>
+        <mat-option value="juice">Juice</mat-option>
+        <mat-option value="snack">Snacks</mat-option>
+        <mat-option value="supplement">Supplements</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input matInput type="number" [(ngModel)]="quantity" min="1" max="99">
+    </mat-form-field>
+  </section>
+
+  @if (message) {
+    <p class="message" role="status">{{ message }}</p>
+  }
+
+  <section class="deal-grid" aria-label="Available flash deals">
+    @for (deal of deals; track deal.id) {
+      <mat-card appearance="outlined" class="deal-card">
+        <mat-card-header>
+          <mat-card-title>{{ deal.name }}</mat-card-title>
+          <mat-card-subtitle>{{ deal.category }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="price">{{ deal.price | currency }}</p>
+          <p>Only {{ deal.stock }} left</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary" (click)="claim(deal)">Reserve now</button>
+        </mat-card-actions>
+      </mat-card>
+    } @empty {
+      <p>No deals match this category. Refresh the page and try again.</p>
+    }
+  </section>
+</main>

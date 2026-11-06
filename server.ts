@@ -126,6 +126,7 @@ import { upgradeToDeluxe, deluxeMembershipStatus } from './routes/deluxe'
 import { serveCodeSnippet, checkVulnLines } from './routes/vulnCodeSnippet'
 import { orderHistory, allOrders, toggleDeliveryStatus } from './routes/orderHistory'
 import { continueCode, continueCodeFindIt, continueCodeFixIt } from './routes/continueCode'
+import { getFlashDeals } from './routes/flashDeals'
 import { ensureFileIsPassed, handleZipFileUpload, checkUploadSize, checkFileType, handleXmlUpload, handleYamlUpload } from './routes/fileUpload'
 
 const app = express()
@@ -629,6 +630,7 @@ function configureApp (app: ReturnType<typeof express>, seq: typeof sequelize) {
   app.get('/rest/user/authentication-details', utils.asyncHandler(authenticatedUsers()))
   app.get('/rest/products/search', utils.asyncHandler(searchProducts()))
   app.get('/rest/basket/:id', utils.asyncHandler(retrieveBasket()))
+  app.get('/rest/flash-deals', getFlashDeals)
   app.post('/rest/basket/:id/checkout', placeOrder())
   app.put('/rest/basket/:id/coupon/:coupon', utils.asyncHandler(applyCoupon()))
   app.get('/rest/admin/application-version', utils.asyncHandler(retrieveAppVersion()))

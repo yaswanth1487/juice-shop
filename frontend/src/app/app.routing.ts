@@ -43,6 +43,7 @@ import { ScoreBoardComponent } from './score-board/score-board.component'
 import { ChatbotComponent } from './chatbot/chatbot.component'
 import { ChatWelcomePageComponent } from './chatbot/chat-welcome-page/chat-welcome-page.component'
 import { ChatConversationComponent } from './chatbot/chat-conversation/chat-conversation.component'
+import { FlashDealsComponent } from './flash-deals/flash-deals.component'
 
 const loadFaucetModule = async () => {
   const module = await import('./faucet/faucet.module')
@@ -133,6 +134,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'flash-deals',
+    component: FlashDealsComponent
   },
   {
     path: 'photo-wall',

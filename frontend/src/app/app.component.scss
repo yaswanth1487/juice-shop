@@ -5,6 +5,16 @@
 
 @use '../styles/variables' as *;
 
+.flash-deal-banner {
+  background: #ffeb3b;
+  color: #000;
+  display: block;
+  font-weight: 700;
+  padding: $space-xs;
+  text-align: center;
+  text-decoration: none;
+}
+
 .mat-sidenav {
   width: 280px;
 }

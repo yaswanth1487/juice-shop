@@ -1,0 +1,50 @@
+/*!
+ * Copyright (c) 2014-2026 Bjoern Kimminich & the OWASP Juice Shop contributors.
+ * SPDX-License-Identifier: MIT
+ */
+
+@use '../../styles/variables' as *;
+
+.flash-deals-page {
+  margin: 0 auto;
+  min-width: 800px;
+  padding: $space-xl;
+  width: 80%;
+}
+
+header {
+  background: linear-gradient(110deg, #ffeb3b, #ff6f00);
+  padding: $space-l;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+}
+
+.featured, .message {
+  background: #fff;
+  padding: $space-xs;
+}
+
+.controls {
+  display: flex;
+  gap: $space-l;
+  margin: $space-l 0;
+}
+
+.deal-grid {
+  display: grid;
+  gap: $space-m;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.deal-card {
+  min-height: 240px;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
